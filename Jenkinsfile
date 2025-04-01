@@ -22,15 +22,15 @@ pipeline {
                 stage('Smoke Tests') {
                     agent { label 'master' }
                     steps {
-                        echo 'Running Smoke Tests on Master...'
-                        bat 'mvn test -Dtest=com.example.SmokeTest'
+                        echo 'Running Smoke Tests on Master using the smoke-tests Maven profile...'
+                        bat 'mvn test -Psmoke-tests'
                     }
                 }
                 stage('Regression Tests') {
                     agent { label 'node1' }
                     steps {
-                        echo 'Running Regression Tests on Node1...'
-                        bat 'mvn test -Dtest=com.example.Reg'
+                        echo 'Running Regression Tests on Node1 using the regression-tests Maven profile...'
+                        bat 'mvn test -Pregression-tests'
                     }
                 }
             }
