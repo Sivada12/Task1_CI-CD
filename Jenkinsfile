@@ -23,6 +23,7 @@ pipeline {
                     agent { label 'master' }
                     steps {
                         echo 'Running Smoke Tests on Master using the smoke-tests Maven profile...'
+                        echo "NODE_NAME: ${env.NODE_NAME}
                         bat 'mvn test -Psmoke-tests'
                     }
                 }
@@ -30,6 +31,7 @@ pipeline {
                     agent { label 'node1' }
                     steps {
                         echo 'Running Regression Tests on Node1 using the regression-tests Maven profile...'
+                        echo "NODE_NAME: ${env.NODE_NAME}
                         bat 'mvn test -Pregression-tests'
                     }
                 }
