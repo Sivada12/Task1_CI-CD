@@ -9,7 +9,7 @@ pipeline {
             }
         }
         
-        stage('Build') {
+        stage('Checkout') {
             agent { label 'master' } 
             steps {
                 echo 'Checking out repository...'
@@ -17,7 +17,7 @@ pipeline {
             }
         }
         
-        stages('Run Tests') {
+        stage('Run Tests') {
             parallel {
                 stage('Smoke Tests') {
                     agent { label 'master' }
