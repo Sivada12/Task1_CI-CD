@@ -17,7 +17,7 @@ pipeline {
             }
         }
         
-        stage('Run Tests') {
+        stages('Run Tests') {
             parallel {
                 stage('Smoke Tests') {
                     agent { label 'master' }
