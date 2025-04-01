@@ -1,15 +1,15 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('Build') {
             agent { label 'master' } 
             steps {
                 echo 'Building the project...'
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
         
-        stage('Checkout') {
+        stage('Build') {
             agent { label 'master' } 
             steps {
                 echo 'Checking out repository...'
@@ -23,14 +23,14 @@ pipeline {
                     agent { label 'master' }
                     steps {
                         echo 'Running Smoke Tests on Master...'
-                        sh 'mvn test -Dtest=com.example.SmokeTest'
+                        bat 'mvn test -Dtest=com.example.SmokeTest'
                     }
                 }
                 stage('Regression Tests') {
                     agent { label 'node1' }
                     steps {
                         echo 'Running Regression Tests on Node1...'
-                        sh 'mvn test -Dtest=com.example.Reg'
+                        bat 'mvn test -Dtest=com.example.Reg'
                     }
                 }
             }
