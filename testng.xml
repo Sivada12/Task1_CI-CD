@@ -3,7 +3,7 @@
 <suite name="Test Suite" parallel="false">
     <test name="Smoke and Regression Tests">
         <classes>
-            <class name="com.example.SmokeTest" />
+            <class name="com.example.Smoke" />
             <class name="com.example.Reg" />
         </classes>
     </test>
